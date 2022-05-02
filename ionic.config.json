@@ -1,0 +1,7 @@
+{
+  "name": "recreio-ju-new-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
