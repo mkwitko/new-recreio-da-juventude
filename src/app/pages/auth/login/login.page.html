@@ -1,0 +1,19 @@
+<ion-content>
+  <div class="center">
+    <img src="assets/img/logo-white.png" id="logo" alt="Recreio da Juventude" />
+    <h1 class="white ion-text-center"><span>Bem Vindo a</span> <strong>Área do Associado</strong></h1>
+    <p class="common-text white ion-text-center">Insira seus dados abaixo</p>
+    <ion-item>
+      <ion-input [(ngModel)]="userClass.userLoginCredentials.email" type="email" placeholder="E-mail"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="userClass.userLoginCredentials.password" type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+    <ion-button class="enter-button" color="tertiary" (click)="login()" expand="block" shape="round">
+      Entrar
+    </ion-button>
+    <ion-button size="small" (click)="forgot()" expand="block" fill="clear" shape="round">
+      <ion-label class="white ion-margin-top">Esqueci minha senha</ion-label>
+    </ion-button>
+  </div>
+</ion-content>

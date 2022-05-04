@@ -1,0 +1,45 @@
+ion-content {
+  --background: url("../../../../assets/img/background.jpg") no-repeat 50% 50% !important;
+  background-size: cover !important;
+}
+
+#logo{
+  max-width: 11rem;
+}
+
+h1{
+  span{
+      display: block;
+      font-size: 1.5rem;
+      font-family: 'latolight';
+  }
+  strong{
+      display: block;
+      font-size: 2.3rem;
+      font-family: 'latoblack';
+      line-height: 2.3rem;
+  }
+}
+
+.common-text{
+  font-size: 1rem;
+  font-family: 'latobold';
+  margin: 1.5rem 0;
+}
+
+ion-item {
+  background: white;
+  border-radius: 3vh;
+  height: 3rem;
+  width: 250px;
+  margin-bottom: 1rem;
+
+  ion-input{
+    --placeholder-color: black;
+    --placeholder-opacity: 1;
+  }
+}
+
+.enter-button {
+  width: 250px;
+}

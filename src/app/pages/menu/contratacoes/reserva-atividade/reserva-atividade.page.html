@@ -1,0 +1,18 @@
+<app-header url="home"></app-header>
+
+<ion-content>
+  <app-page-title title="Reserva de Atividade" subtitle="Selecione a atividade de sua preferência"></app-page-title>
+
+  <div class="flex">
+    <ng-container *ngFor="let item of items">
+      <div button (click)="goTo(item)">
+        <p class="ion-text-center">
+          <app-ezoom-svg customClass="small" [file]="item.svg"></app-ezoom-svg>
+        </p>
+      </div>
+      <p>{{item.name.toUpperCase()}}</p>
+    </ng-container>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

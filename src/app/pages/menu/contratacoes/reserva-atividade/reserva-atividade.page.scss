@@ -1,0 +1,18 @@
+.flex
+{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+
+  div {
+    width: 100%;
+    align-self: center;
+  }
+
+  p {
+    font-family: 'latoblack';
+    font-size: 1.3vh;
+    margin-top: 1vh;
+  }
+}

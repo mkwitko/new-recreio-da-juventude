@@ -24,3 +24,106 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+//Swiper
+@import '~swiper/scss';
+@import '~swiper/scss/autoplay';
+@import '~swiper/scss/keyboard';
+@import '~swiper/scss/pagination';
+@import '~swiper/scss/scrollbar';
+@import '~swiper/scss/zoom';
+@import '~@ionic/angular/css/ionic-swiper';
+
+//Fonts
+@font-face {
+  font-family: 'latoblack';
+  src: url("./assets/fonts/lato-black.woff2") format("woff2"),
+  url("./assets/fonts/lato-black.woff") format("woff"),
+  url("./assets/fonts/lato-black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'latobold';
+  src: url("./assets/fonts/lato-bold.woff2") format("woff2"),
+  url("./assets/fonts/lato-bold.woff") format("woff"),
+  url("./assets/fonts/lato-bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'latolight';
+  src: url("./assets/fonts/lato-light.woff2") format("woff2"),
+  url("./assets/fonts/lato-light.woff") format("woff"),
+  url("./assets/fonts/lato-light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'latoregular';
+  src: url("./assets/fonts/lato-regular.woff2") format("woff2"),
+  url("./assets/fonts/lato-regular.woff") format("woff"),
+  url("./assets/fonts/lato-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+//Setting Default Font
+:root,
+:root[mode=ios],
+:root[mode=md] {
+  --ion-font-family: 'latoregular';
+  font-family: 'latoregular'
+}
+
+//Reset
+p, ion-grid, ion-col, ion-row, ion-card, ion-card-header, ion-card-content {
+  margin: 0;
+  padding: 0;
+}
+
+//Global-margin
+.container {
+  margin: 0 1vh;
+}
+
+//Ion-Accordion White Color
+ion-accordion-group{
+  ion-accordion {
+      .ion-accordion-toggle-icon {
+          font-size: 2.5vh;
+          color: white;
+      }
+  }
+}
+
+//Menu Button
+.menu-button
+{
+  font-size: 4  vh;
+}
+
+
+//Centering
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.center-vertically {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+//Color's class
+.white {
+  color: white;
+}

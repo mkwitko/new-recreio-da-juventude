@@ -1,0 +1,23 @@
+ion-content {
+  background-color: var(--ion-color-primary);
+}
+
+
+ion-menu {
+  ion-content {
+    --ion-background-color: transparent !important;
+  }
+}
+
+.logo {
+  min-height: 6vh;
+  max-height: 6vh;
+}
+
+ion-item {
+  ion-label {
+    font-size: 1.5vh;
+    margin: 0;
+  }
+}
+

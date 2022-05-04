@@ -1,0 +1,19 @@
+.card {
+  background: linear-gradient(147deg, var(--ion-color-secondary) 0%, var(--ion-color-primary) 94%);
+  min-height: 18vh;
+  max-height: 18vh;
+  border-radius: 0;
+
+  ion-grid, ion-row, ion-col {
+    height: 18vh;
+  }
+}
+
+ion-label {
+  font-family: 'latoblack';
+  font-size: 1.5vh;
+}
+
+.img {
+  margin-left: 2.8vh;
+}

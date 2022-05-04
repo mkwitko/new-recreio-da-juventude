@@ -1,0 +1,10 @@
+<ion-select cancelText="Cancelar" okText="Confirmar" placeholder="Clique aqui para Selecionar"  >
+  <ng-container *ngIf="dependentClass.get()">
+    <ion-select-option value="titular">Para Mim</ion-select-option>
+    <ng-container *ngIf="dependentClass.get().data.length > 0">
+      <ng-container *ngFor="let item of dependentClass.get().data">
+        <ion-select-option [value]="item.name.toLowerCase()">{{item.name}}</ion-select-option>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ion-select>

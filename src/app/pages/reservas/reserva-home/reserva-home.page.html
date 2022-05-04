@@ -1,0 +1,14 @@
+<app-header url="home"></app-header>
+
+<ion-content>
+  <ng-container *ngFor="let item of items">
+    <ng-container *ngIf="whichReservation === item.whichReservation">
+      <app-page-title [title]="item.title" [subtitle]="item.subtitle"></app-page-title>
+    </ng-container>
+  </ng-container>
+
+  <app-dependent-select></app-dependent-select>
+
+</ion-content>
+
+<app-footer></app-footer>

@@ -1,3 +1,48 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="menu-content" when="xl">
+    <ion-menu contentId="menu-content" menuId="menu-content" side="end" type="overlay">
+      <ion-content>
+
+        <!-- Logo -->
+        <p class="ion-text-center">
+          <img class="ion-margin-top logo" src="../assets/img/logo-white.png" alt="">
+        </p>
+
+        <!-- Loop de itens para o menu -->
+        <ng-container *ngFor="let item of itens">
+          <!-- Inicio accordion -->
+          <ion-accordion-group>
+            <ion-accordion toggleIcon="arrow-down-outline"color="light" toggleIconSlot="start">
+
+              <!-- Titulo do accordion -->
+              <ion-item slot="header">
+                <ion-label color="light">{{item.name}}</ion-label>
+              </ion-item>
+
+              <!-- Elementos de cada accordion -->
+              <ion-list slot="content">
+                <ng-container *ngFor="let dropdownItem of item.dropdown">
+                  <ion-item (click)="goTo(dropdownItem.path)">
+                    <ion-icon color="light" slot="start" name="{{dropdownItem.icon}}"></ion-icon>
+                    <ion-label color="light">{{dropdownItem.name}}</ion-label>
+                  </ion-item>
+                </ng-container>
+              </ion-list>
+
+            </ion-accordion>
+          </ion-accordion-group>
+        </ng-container>
+      </ion-content>
+
+      <!-- Rodapé -->
+      <ion-footer>
+        <ion-toolbar color="primary">
+          <ion-button (click)="logout()" expand="block" fill="clear" shape="round">
+            <ion-label color="light">Sair</ion-label>
+          </ion-button>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

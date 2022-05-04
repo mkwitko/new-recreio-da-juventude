@@ -1,0 +1,7 @@
+<swiper class="swiper" [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="true">
+  <ng-container *ngFor="let item of slides">
+    <ng-template swiperSlide>
+      <img [src]="item.img" [alt]="item.alt">
+    </ng-template>
+  </ng-container>
+</swiper>
