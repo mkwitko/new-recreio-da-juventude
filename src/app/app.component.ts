@@ -1,5 +1,5 @@
-import { DependentClass } from './classes/dependentes/dependent-class';
-import { UserClass } from 'src/app/classes/user/user-class';
+import { DependentClass } from './classes/nivel-2/dependentes/dependent-class';
+import { UserClass } from 'src/app/classes/nivel-1/user/user-class';
 import { MenuService } from './services/menu/menu.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { Component } from '@angular/core';

@@ -74,9 +74,9 @@ export const environmentGlobal = {
           confirmReserve: 'salons/finish'
         },
         kiosk: {
-          getKiosks: 'reserves/get/kiosks',
-          getKiosk: 'kiosks',
-          reserveKiosk: 'kiosk/reserve'
+          getAllKiosk: 'reserves/get/kiosks/',
+          getKioskById: 'kiosks/',
+          reserveKiosk: 'kiosks/reserve/'
         },
         fitness: {
           getFitness: 'reserves/get/fitness'
@@ -93,7 +93,7 @@ export const environmentGlobal = {
       },
       services:
       {
-        get: 'services/categories',
+        get: 'services/categories/',
         getById: 'services/categories/',
         getCategoryServices: 'services/categories-services/',
         getPrices: 'services/prices/',
@@ -149,8 +149,50 @@ export const environmentGlobal = {
     }
   },
   cache: {
-    user: 'user',
-    dependent: 'dependent'
+    nivel1: {
+      user: 'user'
+    },
+    nivelUserSupport: {
+      notifications: 'notifications',
+      contact: 'contact'
+    },
+    nivel2: {
+      dependents: 'dependent'
+    },
+    nivel3: {
+      managerEspacoLocalizacao: {
+        selected: 'selected'
+      }
+    },
+    nivel4: {
+      fields: 'fields',
+      pool: 'pool',
+      salon: 'salon',
+      kiosk: 'kiosk',
+      fitness: 'fitness',
+      school: 'school',
+      gym: 'gym'
+    },
+    nivel5: {
+      authorization: {
+        politica: 'politica',
+        aceite: 'aceite'
+      },
+      waitlist: 'waitlist',
+      services: {
+        categorias: 'categorias',
+        contratados: 'contratados'
+      },
+      tickets: 'tickets'
+    },
+    nivel6: {
+      letters: 'letters',
+      common: 'common',
+      faq: 'faq',
+      headquarters: 'headquarters',
+      payment: 'payment',
+      banner: 'banner'
+    }
   },
   chatBot: 'https://www.recreiodajuventude.com.br/chatbot',
   wpp: 'https://api.whatsapp.com/send?phone=555140421241',

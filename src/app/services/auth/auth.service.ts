@@ -1,6 +1,6 @@
 import { MasterReqService } from './../master/master-req.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { UserClass } from 'src/app/classes/user/user-class';
+import { UserClass } from 'src/app/classes/nivel-1/user/user-class';
 import { AllowToPassService } from './../allow-to-pass/allow-to-pass.service';
 import { ScreenService } from './../screen/screen.service';
 import { environment } from './../../../environments/environment.prod';

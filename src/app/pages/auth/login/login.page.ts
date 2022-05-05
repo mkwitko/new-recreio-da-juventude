@@ -1,4 +1,4 @@
-import { UserClass } from 'src/app/classes/user/user-class';
+import { UserClass } from 'src/app/classes/nivel-1/user/user-class';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 

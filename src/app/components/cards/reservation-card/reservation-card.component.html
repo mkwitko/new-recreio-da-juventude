@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-grid class="flex" fixed>
+    <ion-row>
+      <ion-col size="12">
+        <div class="center">
+          <ion-icon color="primary"name="calendar-outline"></ion-icon>
+          <ion-label color="light">Confirmar Reserva</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button class="center-vertically" (click)="reserve()" expand="block">
+          Confirmar Reserva
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="spaces-calendar-row center-vertically">
+          <small class="google-terms">
+              Essa seção é protegida por reCAPTCHA e pelo Google,
+              <a href="https://policies.google.com/privacy">Políticas de Privacidade</a> e
+              <a href="https://policies.google.com/terms">Termos de Serviços</a> se aplicam.
+          </small>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

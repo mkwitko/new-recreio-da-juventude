@@ -22,17 +22,17 @@ const routes: Routes = [
   },
   {
     path: 'reserva-atividade',
-    loadChildren: () => import('./pages/menu/contratacoes/reserva-atividade/reserva-atividade.module').then( m => m.ReservaAtividadePageModule),
+    loadChildren: () => import('./pages/menu/contratacoes/atividade/reserva-atividade-home/reserva-atividade.module').then( m => m.ReservaAtividadePageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'reserva-espaco',
-    loadChildren: () => import('./pages/menu/contratacoes/reserva-espaco/reserva-espaco.module').then( m => m.ReservaEspacoPageModule),
+    loadChildren: () => import('./pages/menu/contratacoes/espaco/reserva-espaco-home/reserva-espaco.module').then( m => m.ReservaEspacoPageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'compra-ingresso',
-    loadChildren: () => import('./pages/menu/contratacoes/compra-ingresso/compra-ingresso.module').then( m => m.CompraIngressoPageModule),
+    loadChildren: () => import('./pages/menu/contratacoes/ingresso/compra-ingresso-home/compra-ingresso.module').then( m => m.CompraIngressoPageModule),
     canActivate: [AuthGuard]
   },
   {
@@ -106,9 +106,21 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'reserva-home',
-    loadChildren: () => import('./pages/reservas/reserva-home/reserva-home.module').then( m => m.ReservaHomePageModule),
+    path: 'reserva-atividade-category',
+    loadChildren: () => import('./pages/menu/contratacoes/atividade/reserva-atividade-category/reserva-atividade-category.module').then( m => m.ReservaAtividadeCategoryModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'reserva-espaco-details',
+    loadChildren: () => import('./pages/menu/contratacoes/espaco/reserva-espaco-details/reserva-espaco-details.module').then( m => m.ReservaEspacoDetailsPageModule)
+  },
+  {
+    path: 'compra-ingresso-details',
+    loadChildren: () => import('./pages/menu/contratacoes/ingresso/compra-ingresso-details/compra-ingresso-details.module').then( m => m.CompraIngressoDetailsPageModule)
+  },
+  {
+    path: 'reserva-atividade-details',
+    loadChildren: () => import('./pages/menu/contratacoes/atividade/reserva-atividade-details/reserva-atividade-details.module').then( m => m.ReservaAtividadeDetailsPageModule)
   }
 ];
 

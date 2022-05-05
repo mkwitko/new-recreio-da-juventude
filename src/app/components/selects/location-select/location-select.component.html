@@ -1,0 +1,9 @@
+<ion-select (ionChange)="select($event)" cancelText="Cancelar" okText="Confirmar" [placeholder]="items[0]"  >
+  <ng-container>
+    <ng-container>
+      <ng-container *ngFor="let item of items">
+        <ion-select-option [value]="item">{{item}}</ion-select-option>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ion-select>

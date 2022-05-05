@@ -1,0 +1,18 @@
+<app-header url="reserva-espaco"></app-header>
+
+<ion-content>
+  <div class="container">
+    <ng-container *ngIf="locationManager.get()">
+      <app-page-title [title]="locationManager.get().data.title"></app-page-title>
+    </ng-container>
+
+    <app-reservation-card></app-reservation-card>
+
+    <app-reserve-slide [slides]="locationManager.get().data.images"></app-reserve-slide>
+
+    <div class="common-text" [innerHTML]="locationManager.get().data.text"></div>
+
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

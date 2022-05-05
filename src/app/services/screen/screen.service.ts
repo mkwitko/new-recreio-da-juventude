@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
-import { ActionSheetController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class ScreenService {
   constructor(
     private loadingController: LoadingController,
     private toastr: ToastrService,
-    private actionSheetController: ActionSheetController
+    private alertController: AlertController
   ) { }
 
   /*
@@ -50,59 +49,28 @@ export class ScreenService {
     this.loadingController.dismiss();
   }
 
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
-      cssClass: 'my-custom-class',
-      buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash',
-        id: 'delete-button',
-        data: {
-          type: 'delete'
+  async presentAlertConfirm(message: string, func, header='', cssClass='') {
+    const alert = await this.alertController.create({
+      cssClass,
+      header,
+      message,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button'
         },
-        handler: () => {
-          console.log('Delete clicked');
+        {
+          text: 'Confirmar',
+          id: 'confirm-button',
+          handler: () => {
+            func();
+          }
         }
-      },
-      {
-        text: 'Share',
-        icon: 'share',
-        data: 10,
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'Play (open modal)',
-        icon: 'caret-forward-circle',
-        data: 'Data value',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'Favorite',
-        icon: 'heart',
-        handler: () => {
-          console.log('Favorite clicked');
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+      ]
     });
-    await actionSheet.present();
 
-    const { role, data } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role and data', role, data);
-  }
-
-  actionSheetDismiss()
-  {
-    this.actionSheetController.dismiss();
+    await alert.present();
   }
 }

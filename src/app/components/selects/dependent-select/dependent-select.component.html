@@ -1,4 +1,4 @@
-<ion-select cancelText="Cancelar" okText="Confirmar" placeholder="Clique aqui para Selecionar"  >
+<ion-select (ionChange)="select($event)" cancelText="Cancelar" okText="Confirmar" placeholder="Clique aqui para Selecionar"  >
   <ng-container *ngIf="dependentClass.get()">
     <ion-select-option value="titular">Para Mim</ion-select-option>
     <ng-container *ngIf="dependentClass.get().data.length > 0">

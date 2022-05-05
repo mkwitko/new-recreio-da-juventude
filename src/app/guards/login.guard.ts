@@ -1,4 +1,4 @@
-import { UserClass } from 'src/app/classes/user/user-class';
+import { UserClass } from 'src/app/classes/nivel-1/user/user-class';
 import { Injectable } from '@angular/core';
 import { CanActivate} from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';

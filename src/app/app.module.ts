@@ -1,4 +1,3 @@
-import { SharedModuleModule } from './modules/shared/shared-module/shared-module.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -21,6 +20,9 @@ import { AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 //InAppBrwoser
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
+//Modules
+import { SharedModuleModule } from './modules/shared/shared-module/shared-module.module';
 
 @NgModule({
   declarations: [AppComponent],
