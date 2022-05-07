@@ -2,7 +2,7 @@
 
 <ion-content>
   <app-page-title title="Reserva de Espaços"
-  subtitle="Abaixo estão listados os espaços aos quais o usuário tem acesso para reservar."></app-page-title>
+    subtitle="Abaixo estão listados os espaços aos quais o usuário tem acesso para reservar."></app-page-title>
 
   <app-location-select></app-location-select>
   <app-dependent-select></app-dependent-select>
@@ -12,23 +12,39 @@
       <ng-container *ngIf="reserveLocationDependentClass.avaliableData">
         <ng-container *ngIf="reserveLocationDependentClass.avaliableData.length > 0">
           <ion-col *ngFor="let item of reserveLocationDependentClass.avaliableData" size="6">
-              <ion-card>
-                <ion-card-header>
-                  <img [src]="item.image" alt="">
-                  <ion-card-subtitle class="ion-text-center subtitle margin">{{item.title}}</ion-card-subtitle>
-                  <ion-card-title class="ion-text-center title margin">
-                    <ion-label color="primary" *ngIf="item.status === 'available'">Disponível para reserva</ion-label>
-                  </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-button class="margin" (click)="info(item)" expand="block" fill="outline">
-                    MAIS INFORMAÇÕES
-                  </ion-button>
-                  <ion-button class="margin" (click)="reserve(item)" expand="block">
-                    RESERVAR
-                  </ion-button>
-                </ion-card-content>
-              </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <img [src]="item.image" alt="">
+                <ion-card-subtitle class="ion-text-center subtitle margin">{{item.title}}</ion-card-subtitle>
+                <ion-card-title class="ion-text-center title margin ion-padding">
+                  <ion-label color="primary" *ngIf="item.status === 'available'">Disponível para reserva
+                  </ion-label>
+                  <ion-label color="danger" *ngIf="item.status === 'unavailable'">
+                    Reservado às {{item.reserve_f}}. <br><br>Disponível novamente a partir das {{item.min_time_f}}
+                  </ion-label>
+                  <ion-label color="warning" *ngIf="item.status === 'closed'">
+                    Disponível para reserva às {{item.min_time_f}}.
+                  </ion-label>
+                  <ion-label color="warning" *ngIf="item.status === 'locked'">
+                    Disponível para reserva às {{item.min_time_f}}.
+                  </ion-label>
+                  <ion-label color="primary" *ngIf="item.status === 'reserved'">
+                    Reservado.
+                  </ion-label>
+                  <ion-label color="danger" *ngIf="item.status === 'blocked'">
+                    Você já possuí reservas
+                  </ion-label>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-button class="margin" (click)="info(item)" expand="block" fill="outline">
+                  MAIS INFORMAÇÕES
+                </ion-button>
+                <ion-button *ngIf="item.status === 'available'" class="margin" (click)="reserve(item)" expand="block">
+                  RESERVAR
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
           </ion-col>
         </ng-container>
       </ng-container>

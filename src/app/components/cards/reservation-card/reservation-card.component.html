@@ -3,25 +3,58 @@
     <ion-row>
       <ion-col size="12">
         <div class="center">
-          <ion-icon color="primary"name="calendar-outline"></ion-icon>
+          <ion-icon color="primary" name="calendar-outline"></ion-icon>
           <ion-label color="light">Confirmar Reserva</ion-label>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <ion-button class="center-vertically" (click)="reserve()" expand="block">
+        <ion-button *ngIf="item.status === 'available'" class="center-vertically" (click)="reserve()" expand="block">
           Confirmar Reserva
         </ion-button>
+
+        <ion-button *ngIf="item.status === 'reserved'" class="center-vertically" expand="block">
+          Você já reservou o quiosque
+        </ion-button>
+
+        <ion-button *ngIf="item.status === 'unavailable'" class="center-vertically" color="light" expand="block">
+          Quiosque já está reservado
+        </ion-button>
+
+        <ion-button *ngIf="item.status === 'locked'" class="center-vertically" color="light" expand="block">
+          Disponível a partir das {{item.min_time_f}}
+        </ion-button>
+
+        <ion-button *ngIf="item.status === 'closed'" class="center-vertically" color="light" expand="block">
+          Disponível a partir das {{item.min_time_f}}
+        </ion-button>
+
+        <ion-button *ngIf="item.status === 'blocked'" class="center-vertically" color="light" expand="block">
+          Você já possuí reservas para hoje
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div *ngIf="item.status === 'reserved' && item.reserve.loc_situacao === 'P'">
+          <p *ngIf="item.curr_time <= item.withdraw_time">
+            Você deve retirar a chave do quiosque na portaria até às
+            <strong>{{item.withdraw_time_f}}</strong>.
+            Caso não retire, sua reserva será automaticamente cancelada.</p>
+          <p *ngIf="item.curr_time > item.withdraw_time">
+            Sua reserva vale até o final do dia. Passe na portaria para retirar a chave do quiosque.
+          </p>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
         <div class="spaces-calendar-row center-vertically">
           <small class="google-terms">
-              Essa seção é protegida por reCAPTCHA e pelo Google,
-              <a href="https://policies.google.com/privacy">Políticas de Privacidade</a> e
-              <a href="https://policies.google.com/terms">Termos de Serviços</a> se aplicam.
+            Essa seção é protegida por reCAPTCHA e pelo Google,
+            <a href="https://policies.google.com/privacy">Políticas de Privacidade</a> e
+            <a href="https://policies.google.com/terms">Termos de Serviços</a> se aplicam.
           </small>
         </div>
       </ion-col>

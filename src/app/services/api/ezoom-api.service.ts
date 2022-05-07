@@ -37,6 +37,7 @@ export class EzoomApiService {
 
     async post(method: string, params): Promise<any>
     {
+      console.log(params);
       const headers = await this.getHeaders();
       return new Promise((resolve, reject) => {
         this.http.post(environment.api.baseUrl + method, params, {headers}).subscribe({

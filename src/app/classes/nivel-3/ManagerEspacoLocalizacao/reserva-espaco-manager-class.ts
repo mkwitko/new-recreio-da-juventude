@@ -19,10 +19,13 @@ export class ReservaEspacoManagerClass {
 
   getResponseLocationDependent()
   {
+    console.log(this.locationManager.locationData, this.dependentClass.dependentData);
     if(this.locationManager.locationData && this.dependentClass.dependentData)
     {
+      console.log('b');
       for(const a of this.locationManager.locationData)
       {
+        console.log(a);
         if(a.sequency === this.dependentClass.dependentData)
         {
           this.avaliableData = a.items;

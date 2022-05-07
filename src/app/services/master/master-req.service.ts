@@ -1,3 +1,12 @@
+import { CacheService } from './../cache/cache.service';
+import { EzoomApiService } from './../api/ezoom-api.service';
+import { PoolClass } from './../../classes/nivel-4/pools/pool-class';
+import { SchoolClass } from './../../classes/nivel-4/schools/school-class';
+import { GymClass } from './../../classes/nivel-4/gyms/gym-class';
+import { FitnessClass } from './../../classes/nivel-4/fitnesses/fitness-class';
+import { FieldsClass } from './../../classes/nivel-4/fields/fields-class';
+import { WaitlistClass } from 'src/app/classes/nivel-5/waitlists/waitlist-class';
+import { TicketsClass } from './../../classes/nivel-5/tickets/tickets-class';
 import { ServicesClass } from './../../classes/nivel-5/services/services-class';
 import { PaymentClass } from './../../classes/nivel-6/payments/payment-info-class';
 import { HeadquarterClass } from './../../classes/nivel-6/headquarters/headquarter-class';
@@ -31,12 +40,19 @@ export class MasterReqService {
     private reservaEspacoManager: ReservaEspacoManagerClass,
 
     //4
-    private salonClass: SalonClass,
+    private fieldClass: FieldsClass,
+    private fitnessClass: FitnessClass,
+    private gymClass: GymClass,
     private kioskClass: KioskClass,
+    private poolClass: PoolClass,
+    private salonClass: SalonClass,
+    private schoolClass: SchoolClass,
 
     //5
     private authClass: AuthClass,
     private servicesClass: ServicesClass,
+    private ticketClass: TicketsClass,
+    private waitlistClass: WaitlistClass,
 
     //6
     private bannerClass: BannerClass,
@@ -67,12 +83,19 @@ export class MasterReqService {
     });
 
     //4
-    this.salonClass.setClass();
+    this.fieldClass.setClass();
+    this.fitnessClass.setClass();
+    this.gymClass.setClass();
     this.kioskClass.setClass();
+    this.poolClass.setClass();
+    this.salonClass.setClass();
+    this.schoolClass.setClass();
 
     //5
     this.authClass.setClass();
     this.servicesClass.setClass();
+    this.ticketClass.setClass();
+    this.waitlistClass.setClass();
 
     //6
     this.bannerClass.setClass();
@@ -97,8 +120,13 @@ export class MasterReqService {
     await this.reservaEspacoManager.clear();
 
     //4
-    await this.salonClass.clear();
+    await this.fieldClass.clear();
+    await this.fitnessClass.clear();
+    await this.gymClass.clear();
     await this.kioskClass.clear();
+    await this.poolClass.clear();
+    await this.salonClass.clear();
+    await this.schoolClass.clear();
 
     //5
     await this.authClass.clearPolitica();
@@ -106,6 +134,10 @@ export class MasterReqService {
 
     await this.servicesClass.clearCategoria();
     await this.servicesClass.clearContratado();
+
+    await this.ticketClass.clearMyTickets();
+
+    await this.waitlistClass.clearWaitlist();
 
     //6
     await this.bannerClass.clear();

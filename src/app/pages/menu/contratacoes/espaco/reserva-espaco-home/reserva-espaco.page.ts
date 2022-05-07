@@ -25,7 +25,7 @@ export class ReservaEspacoPage{
   async info(value)
   {
     await this.screen.presentLoading();
-    this.kioskClass.getById(value.id, this.dependentClass.dependentData)
+    this.kioskClass.getKioskByIdHttp(value.id, this.dependentClass.dependentData)
     .then(res => {
       if(res.status)
       {
@@ -50,7 +50,7 @@ export class ReservaEspacoPage{
   async reserve(value)
   {
     await this.screen.presentLoading();
-    this.kioskClass.reservation(value.id, this.dependentClass.dependentData)
+    this.kioskClass.reserve(value.id, this.dependentClass.dependentData)
     .then(res => {
       if(res.status)
       {

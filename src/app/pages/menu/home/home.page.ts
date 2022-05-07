@@ -1,3 +1,4 @@
+import { BannerClass } from './../../../classes/nivel-6/banners/banner';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { Component } from '@angular/core';
 
@@ -63,6 +64,7 @@ export class HomePage {
   ];
 
   constructor(
+    public bannerClass: BannerClass,
     private navigation: NavigationService
   ) { }
 

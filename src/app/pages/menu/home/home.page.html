@@ -6,12 +6,12 @@
       <ion-grid fixed>
         <ion-row>
           <ion-col *ngFor="let item of itens" size="6">
-            <app-home-card (click)="goTo(item.url)" [title]="item.name" [img]="item.img" ></app-home-card>
+            <app-home-card (click)="goTo(item.url)" [title]="item.name" [img]="item.img"></app-home-card>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-    <app-home-slide class="section-2" [slides]="slides"></app-home-slide>
+    <app-home-slide *ngIf="bannerClass.get()" class="section-2" [slides]="bannerClass.get().banners"></app-home-slide>
   </div>
 </ion-content>
 

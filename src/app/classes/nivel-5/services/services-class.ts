@@ -135,11 +135,8 @@ export class ServicesClass{
 
   setContratadoCache()
   {
-    this.cache.getCache(this.cachePathContratados).then(res => {
-      if(!res)
-      {
-        this.cache.setCache(this.cachePathContratados, this.getContratadoInfo());
-      }
+    this.cache.getCache(this.cachePathContratados).then(() => {
+      this.cache.setCache(this.cachePathContratados, this.getContratadoInfo());
     });
   }
 
@@ -189,6 +186,12 @@ export class ServicesClass{
     // Funções Gerais
   setClass()
   {
+    this.setClassCategoria();
+    this.setClassContratado();
+  }
+
+  setClassCategoria()
+  {
     this.getCategoriaCache().then(cacheInfo => {
       if(!cacheInfo)
       {
@@ -201,17 +204,45 @@ export class ServicesClass{
         this.setCategoria(cacheInfo);
       }
     });
+  }
+
+  /*
+  Requisição
+
+  Já existe em cache?
+    -> Sim
+      -> É igual à requisição?
+        -> Sim -> Seta variavel
+        -> Não -> Seta variavel + Cache
+
+    -> Não -> Seta variavel + Cache
+  */
+  setClassContratado()
+  {
+    // Retorna informação do cache
     this.getContratadoCache().then(cacheInfo => {
-      if(!cacheInfo)
-      {
-        this.getContratadoHttp().then(res => {
-          this.setContratado(res);
+
+      this.getContratadoHttp().then(res => {
+
+        //Preenche variavel
+        this.setContratado(res);
+
+        //Se já existir em cache
+        if(cacheInfo)
+        {
+          // E a requisição http for diferente
+          if(cacheInfo !== res)
+          {
+            // Atualiza cache
+            this.setContratadoCache();
+          }
+        }
+        else
+        {
+          // Se não existir cache, preenche
           this.setContratadoCache();
-        });
-      } else
-      {
-        this.setContratado(cacheInfo);
-      }
+        }
+      });
     });
   }
 }

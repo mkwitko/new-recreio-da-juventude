@@ -31,11 +31,12 @@ export class LocationSelectComponent {
   {
     if(selectedValue.toLowerCase() === this.items[0].toLowerCase())
     {
-     this.locationManager.set(this.locationManager.kioskClass.get().data);
+      console.log(this.locationManager.kioskClass.getKioskInfo());
+      this.locationManager.set(this.locationManager.kioskClass.getKioskInfo());
     }
     else if(selectedValue.toLowerCase() === this.items[1].toLowerCase())
     {
-      this.locationManager.set(this.locationManager.salonClass.get().data);
+      this.locationManager.set(this.locationManager.salonClass.getSalonInfo());
     }
     this.reserveLocationDependentClass.getResponseLocationDependent();
   }

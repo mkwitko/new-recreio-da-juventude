@@ -1,3 +1,9 @@
+import { SchoolClass } from './../../../classes/nivel-4/schools/school-class';
+import { PoolClass } from './../../../classes/nivel-4/pools/pool-class';
+import { GymClass } from './../../../classes/nivel-4/gyms/gym-class';
+import { FitnessClass } from './../../../classes/nivel-4/fitnesses/fitness-class';
+import { FieldsClass } from './../../../classes/nivel-4/fields/fields-class';
+import { TicketsClass } from './../../../classes/nivel-5/tickets/tickets-class';
 import { AuthClass } from './../../../classes/nivel-5/authorizations/authorization-class';
 import { PaymentClass } from './../../../classes/nivel-6/payments/payment-info-class';
 import { HeadquarterClass } from './../../../classes/nivel-6/headquarters/headquarter-class';
@@ -15,6 +21,7 @@ import { ReservaEspacoManagerClass } from 'src/app/classes/nivel-3/ManagerEspaco
 import { KioskClass } from 'src/app/classes/nivel-4/kiosks/kiosk-class';
 import { SalonClass } from 'src/app/classes/nivel-4/salons/salon-class';
 import { ServicesClass } from 'src/app/classes/nivel-5/services/services-class';
+import { WaitlistClass } from 'src/app/classes/nivel-5/waitlists/waitlist-class';
 
 @NgModule({
   declarations: [],
@@ -38,10 +45,17 @@ import { ServicesClass } from 'src/app/classes/nivel-5/services/services-class';
     //Nivel 4
     KioskClass,
     SalonClass,
+    FieldsClass,
+    FitnessClass,
+    GymClass,
+    PoolClass,
+    SchoolClass,
 
     //Nivel 5
     AuthClass,
     ServicesClass,
+    TicketsClass,
+    WaitlistClass,
 
     //Nivel 6
 

@@ -6,16 +6,15 @@ import { CacheService } from 'src/app/services/cache/cache.service';
 @Injectable()
 export class AuthClass{
 
+  //Att {'S': 'N'} Id, sequency -> NÃO ESTÁ FUNCIONANDO (?????)
+
   private politicaDePrivacidade;
   private termosDeAceite;
 
   //Id, sequency
   private controllerAceite = environment.api.controllers.authorization.getAutorizacao;
-
   private controllerPolitica = environment.api.controllers.authorization.getPolitica;
-
-  //Att {'S': 'N'} Id, sequency -> NÃO ESTÁ FUNCIONANDO (?????)
-  private controllerSetAceite = environment.api.controllers.authorization.set;
+  // private controllerSetAceite = environment.api.controllers.authorization.set;
 
   private cachePathPolitica = environment.cache.nivel5.authorization.politica;
   private cachePathAceite = environment.cache.nivel5.authorization.aceite;
@@ -124,7 +123,6 @@ export class AuthClass{
   setAceite(req)
   {
     this.termosDeAceite = req;
-    console.log(req);
   }
 
   setAceiteCache()

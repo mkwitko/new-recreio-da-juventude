@@ -1,31 +1,32 @@
-import { HttpParams } from '@angular/common/http';
+import { CacheService } from './../../../services/cache/cache.service';
+import { EzoomApiService } from './../../../services/api/ezoom-api.service';
+import { environment } from './../../../../environments/environment.prod';
 import { Injectable } from '@angular/core';
-import { EzoomApiService } from 'src/app/services/api/ezoom-api.service';
-import { CacheService } from 'src/app/services/cache/cache.service';
-import { environment } from 'src/environments/environment.prod';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class SalonClass {
 
   private info;
-  private controller = environment.api.controllers.reservations.salon.getSalons;
-  private controllerById = environment.api.controllers.reservations.salon.getSalonsDetails;
-  private controllerReserve = environment.api.controllers.reservations.salon.reserveSalon;
-  private cachePath = environment.cache.nivel4.salon;
+  private controllerSalon = environment.api.controllers.reservations.salon.getSalons;
+  private controllerSalonById = environment.api.controllers.reservations.salon.getSalonsDetails;
+  private controllerSalonReserve = environment.api.controllers.reservations.salon.reserveSalon;
+  private cachepathSalon = environment.cache.nivel4.salon;
 
   constructor(
-    private cache: CacheService,
-    private api: EzoomApiService
+    private api: EzoomApiService,
+    private cache: CacheService
   ) {}
 
-  getHttp(): Promise<any>
+  //Começo Funções My Tickets
+  getSalonHttp(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.api.get(this.controller)
+      this.api.get(this.controllerSalon)
       .then(res => {
         if(res.status)
         {
-          resolve(res);
+          resolve(res.data);
         }
       })
       .catch(err => {
@@ -34,36 +35,15 @@ export class SalonClass {
     });
   }
 
-  getById(id: string, sequency: string): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
-      this.api.get(this.controllerById + id, new HttpParams().set('sequency', sequency))
-      .then(res => {
-        if(res.status)
-        {
-          resolve(res);
-        }
-      })
-      .catch(err => {
-        reject(err);
-      });
-    });
-  }
-
-  get()
+  getSalonInfo()
   {
     return this.info;
   }
 
-  getCachePath()
-  {
-    return this.cachePath;
-  }
-
-  getCache(cachePath): Promise<any>
+  getSalonCache(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.cache.getCache(cachePath)
+      this.cache.getCache(this.cachepathSalon)
       .then(res => {
         resolve(res);
       })
@@ -73,54 +53,22 @@ export class SalonClass {
     });
   }
 
-  reservation(id: string, sequency): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
-      this.api.post(this.controllerReserve + id, new HttpParams().set('sequency', sequency))
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
-    });
-  }
-
-  setClass()
-  {
-    this.getCache(this.cachePath).then(cacheInfo => {
-      if(!cacheInfo)
-      {
-        this.getHttp().then(res => {
-          this.set(res);
-          this.setCache(this.cachePath);
-        });
-      } else
-      {
-        this.set(cacheInfo);
-      }
-    });
-  }
-
-  set(req)
+  setSalon(req)
   {
     this.info = req;
   }
 
-  setCache(cachePath)
+  setSalonCache()
   {
-    this.cache.getCache(cachePath).then(res => {
-      if(!res)
-      {
-        this.cache.setCache(cachePath, this.get());
-      }
+    this.cache.getCache(this.cachepathSalon).then(() => {
+      this.cache.setCache(this.cachepathSalon, this.getSalonInfo());
     });
   }
 
   clear(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.cache.removeCache(this.cachePath)
+      this.cache.removeCache(this.cachepathSalon)
       .then(res => {
         resolve(res);
       })
@@ -130,4 +78,68 @@ export class SalonClass {
     });
   }
 
+  /*
+  Requisição
+
+  Já existe em cache?
+    -> Sim
+      -> É igual à requisição?
+        -> Sim -> Seta variavel
+        -> Não -> Seta variavel + Cache
+
+    -> Não -> Seta variavel + Cache
+  */
+
+  setClassSalon()
+    {
+      // Retorna informação do cache
+      this.getSalonCache().then(cacheInfo => {
+
+        //null ou valor do cache
+        this.setSalon(cacheInfo);
+
+        this.getSalonHttp().then(res => {
+          // Atualiza cache
+          this.setSalon(res);
+          this.setSalonCache();
+        });
+      });
+  }
+  // Fim
+
+  setClass()
+  {
+    this.setClassSalon();
+  }
+
+  getSalonByIdHttp(id: string, sequency: string): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+      this.api.get(this.controllerSalonById + id, new HttpParams()
+      .set('sequency', sequency))
+      .then(res => {
+        if(res.status)
+        {
+          resolve(res.data);
+        }
+      })
+      .catch(err => {
+        reject(err);
+      });
+    });
+  }
+
+  reserve(id: string, sequency: string, date): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+      this.api.post(this.controllerSalonReserve + id, new HttpParams()
+      .set('sequency', sequency))
+      .then(res => {
+        resolve(res);
+      })
+      .catch(err => {
+        reject(err);
+      });
+    });
+  }
 }

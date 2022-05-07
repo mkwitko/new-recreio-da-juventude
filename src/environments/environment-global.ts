@@ -30,12 +30,6 @@ export const environmentGlobal = {
       dependentes: 'user/dependents',
       extract: 'extract',
       faq: 'faq',
-      fields: {
-        getAll: 'fields',
-        getById: 'fields/details/',
-        reserve: 'fields/reserve/',
-        getSchedule: 'fields/schedule/'
-      },
       headquarters: 'headquarters',
       invoices: {
         get: 'invoices',
@@ -89,7 +83,13 @@ export const environmentGlobal = {
         gym: {
           getActivity: 'gym',
           reserveActivity: 'gym/reserve/'
-        }
+        },
+        fields: {
+          getAll: 'fields',
+          getById: 'fields/details/',
+          reserve: 'fields/reserve/',
+          getSchedule: 'fields/schedule/'
+        },
       },
       services:
       {
@@ -116,7 +116,7 @@ export const environmentGlobal = {
         getMyTickets: 'tickets/my-tickets',
         getEventDetails: 'tickets/details/',
         getRelated: 'tickets/related/',
-        createToken: 'tickets/buy',
+        createToken: 'tickets/buy/',
         finishOrder: 'tickets/finish'
       },
       user: {
@@ -183,7 +183,11 @@ export const environmentGlobal = {
         categorias: 'categorias',
         contratados: 'contratados'
       },
-      tickets: 'tickets'
+      tickets: {
+        getTickets: 'getTickets',
+        getAllTickets: 'getAllTickets',
+        getMyTickets: 'getMyTickets'
+      }
     },
     nivel6: {
       letters: 'letters',

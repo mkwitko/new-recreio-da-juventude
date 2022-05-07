@@ -1,31 +1,32 @@
-import { HttpParams } from '@angular/common/http';
+import { CacheService } from './../../../services/cache/cache.service';
+import { EzoomApiService } from './../../../services/api/ezoom-api.service';
+import { environment } from './../../../../environments/environment.prod';
 import { Injectable } from '@angular/core';
-import { EzoomApiService } from 'src/app/services/api/ezoom-api.service';
-import { CacheService } from 'src/app/services/cache/cache.service';
-import { environment } from 'src/environments/environment.prod';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class KioskClass {
 
   private info;
-  private controller = environment.api.controllers.reservations.kiosk.getAllKiosk;
-  private controllerById = environment.api.controllers.reservations.kiosk.getKioskById;
-  private controllerReserve = environment.api.controllers.reservations.kiosk.reserveKiosk;
-  private cachePath = environment.cache.nivel4.kiosk;
+  private controllerKiosk = environment.api.controllers.reservations.kiosk.getAllKiosk;
+  private controllerKioskById = environment.api.controllers.reservations.kiosk.getKioskById;
+  private controllerKioskReserve = environment.api.controllers.reservations.kiosk.reserveKiosk;
+  private cachepathKiosk = environment.cache.nivel4.kiosk;
 
   constructor(
-    private cache: CacheService,
-    private api: EzoomApiService
+    private api: EzoomApiService,
+    private cache: CacheService
   ) {}
 
-  getHttp(): Promise<any>
+  //Começo Funções My Tickets
+  getKioskHttp(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.api.get(this.controller)
+      this.api.get(this.controllerKiosk)
       .then(res => {
         if(res.status)
         {
-          resolve(res);
+          resolve(res.data);
         }
       })
       .catch(err => {
@@ -34,36 +35,15 @@ export class KioskClass {
     });
   }
 
-  getById(id: string, sequency: string): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
-      this.api.get(this.controllerById + id, new HttpParams().set('sequency', sequency))
-      .then(res => {
-        if(res.status)
-        {
-          resolve(res);
-        }
-      })
-      .catch(err => {
-        reject(err);
-      });
-    });
-  }
-
-  get()
+  getKioskInfo()
   {
     return this.info;
   }
 
-  getCachePath()
-  {
-    return this.cachePath;
-  }
-
-  getCache(cachePath): Promise<any>
+  getKioskCache(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.cache.getCache(cachePath)
+      this.cache.getCache(this.cachepathKiosk)
       .then(res => {
         resolve(res);
       })
@@ -73,54 +53,22 @@ export class KioskClass {
     });
   }
 
-  reservation(id: string, sequency): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
-      this.api.post(this.controllerReserve + id, new HttpParams().set('sequency', sequency))
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
-    });
-  }
-
-  setClass()
-  {
-    this.getCache(this.cachePath).then(cacheInfo => {
-      if(!cacheInfo)
-      {
-        this.getHttp().then(res => {
-          this.set(res);
-          this.setCache(this.cachePath);
-        });
-      } else
-      {
-        this.set(cacheInfo);
-      }
-    });
-  }
-
-  set(req)
+  setKiosk(req)
   {
     this.info = req;
   }
 
-  setCache(cachePath)
+  setKioskCache()
   {
-    this.cache.getCache(cachePath).then(res => {
-      if(!res)
-      {
-        this.cache.setCache(cachePath, this.get());
-      }
+    this.cache.getCache(this.cachepathKiosk).then(() => {
+      this.cache.setCache(this.cachepathKiosk, this.getKioskInfo());
     });
   }
 
   clear(): Promise<any>
   {
     return new Promise((resolve, reject) => {
-      this.cache.removeCache(this.cachePath)
+      this.cache.removeCache(this.cachepathKiosk)
       .then(res => {
         resolve(res);
       })
@@ -130,4 +78,56 @@ export class KioskClass {
     });
   }
 
+setClassKiosk()
+    {
+      // Retorna informação do cache
+      this.getKioskCache().then(cacheInfo => {
+
+        //null ou valor do cache
+        this.setKiosk(cacheInfo);
+
+        this.getKioskHttp().then(res => {
+          // Atualiza cache
+          this.setKiosk(res);
+          this.setKioskCache();
+        });
+      });
+  }
+  setClass()
+  {
+    this.setClassKiosk();
+  }
+
+
+
+  getKioskByIdHttp(id: string, sequency: string): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+      this.api.get(this.controllerKioskById + id, new HttpParams()
+      .set('sequency', sequency))
+      .then(res => {
+        if(res.status)
+        {
+          resolve(res.data);
+        }
+      })
+      .catch(err => {
+        reject(err);
+      });
+    });
+  }
+
+  reserve(id: string, sequency: string): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+      this.api.post(this.controllerKioskReserve + id, new HttpParams()
+      .set('sequency', sequency))
+      .then(res => {
+        resolve(res);
+      })
+      .catch(err => {
+        reject(err);
+      });
+    });
+  }
 }
