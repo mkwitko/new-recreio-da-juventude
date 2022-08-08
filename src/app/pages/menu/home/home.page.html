@@ -1,18 +1,8 @@
 <app-header [menu]="true"></app-header>
 
 <ion-content>
-  <div class="parent">
-    <div class="section-1">
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col *ngFor="let item of itens" size="6">
-            <app-home-card (click)="goTo(item.url)" [title]="item.name" [img]="item.img"></app-home-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
+
     <app-home-slide *ngIf="bannerClass.get()" class="section-2" [slides]="bannerClass.get().banners"></app-home-slide>
-  </div>
 </ion-content>
 
 <app-footer></app-footer>

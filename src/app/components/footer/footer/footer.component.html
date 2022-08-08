@@ -1,13 +1,12 @@
-
 <ion-footer>
-  <ion-toolbar color="light">
-    <div class="flex">
-      <ng-container *ngFor="let item of tabs">
-        <div (click)="goTo(item.path, item.link)" class="inner">
-          <ion-icon color="primary" slot="start" name="{{item.icon}}"></ion-icon>
-          <ion-label class="ion-text-center">{{item.name}}</ion-label>
+    <ion-toolbar color="light">
+        <div class="flex">
+            <ng-container *ngFor="let item of tabs">
+                <div (click)="goTo(item.path, item.link)" class="inner">
+                    <ion-icon color="primary" slot="start" name="{{item.icon}}"></ion-icon>
+                    <ion-label class="ion-text-center">{{item.name}}</ion-label>
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-footer>

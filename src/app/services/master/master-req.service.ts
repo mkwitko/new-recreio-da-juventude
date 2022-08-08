@@ -21,12 +21,12 @@ import { BannerClass } from 'src/app/classes/nivel-6/banners/banner';
 import { AuthClass } from 'src/app/classes/nivel-5/authorizations/authorization-class';
 import { SalonClass } from 'src/app/classes/nivel-4/salons/salon-class';
 import { KioskClass } from 'src/app/classes/nivel-4/kiosks/kiosk-class';
+import { TrainingClass } from 'src/app/classes/nivel-4/training/training-class';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MasterReqService {
-
   constructor(
     //1
     private userClass: UserClass,
@@ -47,6 +47,7 @@ export class MasterReqService {
     private poolClass: PoolClass,
     private salonClass: SalonClass,
     private schoolClass: SchoolClass,
+    private trainingClass: TrainingClass,
 
     //5
     private authClass: AuthClass,
@@ -61,10 +62,9 @@ export class MasterReqService {
     private faqClass: FaqClass,
     private headquarterClass: HeadquarterClass,
     private paymentClass: PaymentClass
-  ) { }
+  ) {}
 
-  getAll()
-  {
+  getAll() {
     //1
     this.userClass.setClass();
 
@@ -74,10 +74,8 @@ export class MasterReqService {
     this.dependentClass.setClass();
 
     //3
-    this.reservaEspacoManager.getCache()
-    .then(res => {
-      if(res)
-      {
+    this.reservaEspacoManager.getCache().then((res) => {
+      if (res) {
         this.reservaEspacoManager.set(res);
       }
     });
@@ -90,6 +88,7 @@ export class MasterReqService {
     this.poolClass.setClass();
     this.salonClass.setClass();
     this.schoolClass.setClass();
+    this.trainingClass.setClass();
 
     //5
     this.authClass.setClass();
@@ -106,8 +105,7 @@ export class MasterReqService {
     this.paymentClass.setClass();
   }
 
-  async clearAllCache()
-  {
+  async clearAllCache() {
     //1
     await this.userClass.clear();
 
@@ -146,6 +144,5 @@ export class MasterReqService {
     // this.faqClass.clear();
     // this.headquarterClass.clear();
     // this.paymentClass.clear();
-
   }
 }

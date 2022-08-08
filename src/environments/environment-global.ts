@@ -10,7 +10,7 @@ export const environmentGlobal = {
         index: 'call_list/index',
         hours: 'call_list/get_service_hours',
         students: 'call_list/get_students',
-        save: 'call_list/save_call_list'
+        save: 'call_list/save_call_list',
       },
       cartas: 'cartas/getCartas',
       common: 'common/content',
@@ -24,7 +24,7 @@ export const environmentGlobal = {
         getFormInfo: 'contact/get_form_infos',
         getUserCalls: 'contact/get_user_calls',
         getCall: 'contact/get_call',
-        getStatus: 'contact/get_status'
+        getStatus: 'contact/get_status',
       },
       creditCard: 'credit-card/pay',
       dependentes: 'user/dependents',
@@ -34,11 +34,11 @@ export const environmentGlobal = {
       invoices: {
         get: 'invoices',
         opened: 'invoices/opened',
-        extract: 'invoices/extract'
+        extract: 'invoices/extract',
       },
       meusTreinos: {
         get: 'meus_treinos/treinos',
-        historico: 'meus_treinos/historico'
+        historico: 'meus_treinos/historico',
       },
       notification: {
         get: 'notifications/getNotification',
@@ -47,52 +47,51 @@ export const environmentGlobal = {
         getNofications: 'notifications/getNotifications',
         getUnreadCount: 'notifications/getUnreadCount',
         readAll: 'notifications/readAll',
-        readNotification: 'notifications/read'
+        readNotification: 'notifications/read',
       },
       payment: 'payment/methods',
       reservations: {
         general: {
           get: 'reserves',
-          cancelReserve: 'reserves/cancel'
+          cancelReserve: 'reserves/cancel',
         },
         pool: {
           getFreePools: 'reserves/pools',
           getPool: 'pools',
-          reservePool: 'pools/reserve'
+          reservePool: 'pools/reserve',
         },
         salon: {
           getSalons: 'reserves/get/salon',
           getSalonsDetails: 'salons/',
           checkSalonAvailability: 'salons/check-availability',
           reserveSalon: 'salon/reserve',
-          confirmReserve: 'salons/finish'
+          confirmReserve: 'salons/finish',
         },
         kiosk: {
           getAllKiosk: 'reserves/get/kiosks/',
           getKioskById: 'kiosks/',
-          reserveKiosk: 'kiosks/reserve/'
+          reserveKiosk: 'kiosks/reserve/',
         },
         fitness: {
-          getFitness: 'reserves/get/fitness'
+          getFitness: 'reserves/get/fitness',
         },
         school: {
           getSchools: 'reserves/get/schools',
           getSchool: 'schools/',
-          reserveSchool: 'schools/reserve/'
+          reserveSchool: 'schools/reserve/',
         },
         gym: {
           getActivity: 'gym',
-          reserveActivity: 'gym/reserve/'
+          reserveActivity: 'gym/reserve/',
         },
         fields: {
           getAll: 'fields',
           getById: 'fields/details/',
           reserve: 'fields/reserve/',
-          getSchedule: 'fields/schedule/'
+          getSchedule: 'fields/schedule/',
         },
       },
-      services:
-      {
+      services: {
         get: 'services/categories/',
         getById: 'services/categories/',
         getCategoryServices: 'services/categories-services/',
@@ -103,12 +102,12 @@ export const environmentGlobal = {
         cancelContract: 'services/cancel',
         renewContract: 'services/renew',
         contract: 'services/contract',
-        sendSuggestTime: 'services/suggest-time'
+        sendSuggestTime: 'services/suggest-time',
       },
       authorization: {
         set: 'direito_imagem/setAutorizacao',
         getAutorizacao: 'direito_imagem/getAutorizacao',
-        getPolitica: 'politica_de_privacidade'
+        getPolitica: 'politica_de_privacidade',
       },
       tickets: {
         get: 'tickets',
@@ -117,7 +116,7 @@ export const environmentGlobal = {
         getEventDetails: 'tickets/details/',
         getRelated: 'tickets/related/',
         createToken: 'tickets/buy/',
-        finishOrder: 'tickets/finish'
+        finishOrder: 'tickets/finish',
       },
       user: {
         getPhones: 'user/phones',
@@ -139,30 +138,30 @@ export const environmentGlobal = {
         verify: 'user/verify',
         getTrackPermissionTime: 'trackTime',
         setTrackPermissionTime: 'trackTime',
-        registerLocation: 'user/update-location'
+        registerLocation: 'user/update-location',
       },
       waitList: {
         get: 'waitlist',
         leave: 'waitlist/leave',
-        enter: 'waitlist/enter'
-      }
-    }
+        enter: 'waitlist/enter',
+      },
+    },
   },
   cache: {
     nivel1: {
-      user: 'user'
+      user: 'user',
     },
     nivelUserSupport: {
       notifications: 'notifications',
-      contact: 'contact'
+      contact: 'contact',
     },
     nivel2: {
-      dependents: 'dependent'
+      dependents: 'dependent',
     },
     nivel3: {
       managerEspacoLocalizacao: {
-        selected: 'selected'
-      }
+        selected: 'selected',
+      },
     },
     nivel4: {
       fields: 'fields',
@@ -171,23 +170,24 @@ export const environmentGlobal = {
       kiosk: 'kiosk',
       fitness: 'fitness',
       school: 'school',
-      gym: 'gym'
+      gym: 'gym',
+      training: 'training',
     },
     nivel5: {
       authorization: {
         politica: 'politica',
-        aceite: 'aceite'
+        aceite: 'aceite',
       },
       waitlist: 'waitlist',
       services: {
         categorias: 'categorias',
-        contratados: 'contratados'
+        contratados: 'contratados',
       },
       tickets: {
         getTickets: 'getTickets',
         getAllTickets: 'getAllTickets',
-        getMyTickets: 'getMyTickets'
-      }
+        getMyTickets: 'getMyTickets',
+      },
     },
     nivel6: {
       letters: 'letters',
@@ -195,10 +195,15 @@ export const environmentGlobal = {
       faq: 'faq',
       headquarters: 'headquarters',
       payment: 'payment',
-      banner: 'banner'
-    }
+      banner: 'banner',
+    },
   },
   chatBot: 'https://www.recreiodajuventude.com.br/chatbot',
   wpp: 'https://api.whatsapp.com/send?phone=555140421241',
-  reservations: ['reservar-academia', 'reservar-quadra', 'reservar-piscina', 'reservar-escolinha']
+  reservations: [
+    'reservar-academia',
+    'reservar-quadra',
+    'reservar-piscina',
+    'reservar-escolinha',
+  ],
 };

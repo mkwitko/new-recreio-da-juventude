@@ -1,3 +1,4 @@
+import { TrainingClass } from './../../../classes/nivel-4/training/training-class';
 import { SchoolClass } from './../../../classes/nivel-4/schools/school-class';
 import { PoolClass } from './../../../classes/nivel-4/pools/pool-class';
 import { GymClass } from './../../../classes/nivel-4/gyms/gym-class';
@@ -25,9 +26,7 @@ import { WaitlistClass } from 'src/app/classes/nivel-5/waitlists/waitlist-class'
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   providers: [
     //Nivel 1
     UserClass,
@@ -50,6 +49,7 @@ import { WaitlistClass } from 'src/app/classes/nivel-5/waitlists/waitlist-class'
     GymClass,
     PoolClass,
     SchoolClass,
+    TrainingClass,
 
     //Nivel 5
     AuthClass,
@@ -65,7 +65,7 @@ import { WaitlistClass } from 'src/app/classes/nivel-5/waitlists/waitlist-class'
     CommonClass,
     FaqClass,
     HeadquarterClass,
-    PaymentClass
-  ]
+    PaymentClass,
+  ],
 })
-export class SharedModuleModule { }
+export class SharedModuleModule {}

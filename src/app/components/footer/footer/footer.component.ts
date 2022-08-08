@@ -7,51 +7,46 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent{
-
-  iconType = '-outline';
+export class FooterComponent {
+  iconType = '-sharp';
 
   public tabs = [
     {
-      name: 'Home',
+      name: 'Inicio',
       icon: 'home' + this.iconType,
-      path: 'home'
+      path: 'home',
     },
     {
-      name: 'Mapa do Clube',
-      icon: 'map' + this.iconType,
-      path: 'mapa-clube'
+      name: 'Social',
+      icon: 'at-circle' + this.iconType,
+      path: 'social-home',
     },
     {
-      name: 'Reserva de Atividades',
-      icon: 'bicycle' + this.iconType,
-      path: 'reserva-atividade'
+      name: 'Academia',
+      icon: 'barbell' + this.iconType,
+      path: 'academia-home',
     },
     {
-      name: 'Whatsapp',
-      icon: 'logo-whatsapp',
-      link: environment.wpp
+      name: 'Eventos',
+      icon: 'balloon' + this.iconType,
+      path: 'eventos-home',
+    },
+    {
+      name: 'Reservar',
+      icon: 'sunny',
+      path: '',
     },
   ];
 
-  constructor(
-    private navigation: NavigationService
-  )
-  {
+  constructor(private navigation: NavigationService) {}
 
-  }
-
-  goTo(url: string, link: string)
-  {
-    if(url)
-    {
+  goTo(url: string, link: string) {
+    if (url) {
       this.navigation.goTo(url);
     }
 
-    if(link)
-    {
+    if (link) {
       this.navigation.away(link);
     }
   }
-
 }
